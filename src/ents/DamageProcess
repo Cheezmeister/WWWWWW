@@ -1,0 +1,22 @@
+package src.ents
+{
+  import org.flixel.*;
+  import src.core.*;
+
+  public class DamageComponent extends Component
+  {
+    public var damage:Number;
+    public var affected:Class[];
+  }
+
+  public class DamageProcess extends Process
+  {
+    public function DamageProcess() : super(DamageComponent)
+    {
+      public override function process(c:DamageComponent)
+      {
+      }
+    }
+  }
+
+}
