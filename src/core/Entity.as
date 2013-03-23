@@ -22,10 +22,8 @@ package src.core
     private function addComponent(c:Component):void
     {
       var type:String = Object(c).constructor.toString();
-      FlxG.log("type=" + type);
       this._components[type] = c; 
       c.setData(this);
-      FlxG.log("now type=" + _components[type]);
     }
   }
 }

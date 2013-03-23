@@ -19,14 +19,12 @@ package src.core
 
     public final function withParams(params:Object):Component
     {
-      // FlxG.log("Component::params=" + params);
       setParams(params);
       return this;
     }
 
     public final function setParams(params:Object):void
     {
-      // FlxG.log("now Component::params=" + params);
       this._params = params;
     }
 

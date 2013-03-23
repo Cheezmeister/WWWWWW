@@ -11,7 +11,6 @@ package src.ents
     }
     protected override function operate(c:Component):void
     {
-      // FlxG.log("WOOBLE " + c);
       // Walk left/right
       c.entity.acceleration.x = (
         FlxG.keys.RIGHT ? c.params.walkAccel : 
@@ -34,6 +33,9 @@ package src.ents
       {
         c.entity.acceleration.y = c.params.gravity;
       }
+
+//      FlxG.log("x = " + c.entity.x);
+//      FlxG.log("y = " + c.entity.y);
 
     }
   }

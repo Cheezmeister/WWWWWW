@@ -19,52 +19,32 @@ package src.states
 
     override public function create():void
     {
-//      FlxG.mouse.show();
-//      titleText = new FlxText(0, 0, FlxG.width, title)
-//        .setFormat(null, 8, 0xffffffff, "center", 0);
-//      add(titleText);
+      titleText = new FlxText(0, 0, FlxG.width, title)
+        .setFormat(null, 8, 0xffffffff, "center", 0);
+      add(titleText);
 
 
+      // Create CE
       componentEntitySystem = new CESystem();
 
-      
-
-      //  .withComponent(new SolidComponent())
-      //  .withComponent(new PlayerComponent().withParams({
-      //    walkAccel : 50,
-      //    jumpVel : 80,
-      //    //walkDrag : 80,
-      //    gravity : 50
-      //  }));
-
-      var player:Entity = new Entity()
-        .withComponent(new SolidComponent())
-        .withComponent(new PlayerComponent().withParams({
-          walkAccel : 50,
-          jumpVel : 80,
-          //walkDrag : 80,
-          gravity : 50
-        }));
-      player.x = FlxG.width / 2;
-      player.y = FlxG.height / 2;
-      player.makeGraphic(32,100, 0xff00ffff);
-      FlxG.log("adding Player");
-      add(player); // 8D
-
-
-      //floor = new FlxTileblock(0, FlxG.height - 4, FlxG.width, 4);
-      //floor.makeGraphic(FlxG.width, 4, 0xff689c16);
-
+      // Add ents
       var ground:Entity = new Entity()
         .withComponent(new SolidComponent());
-
       ground.makeGraphic(FlxG.width, 4, 0xff228822);
       ground.immovable = true;
       ground.x = 0;
       ground.y = FlxG.height - 4;
-      FlxG.log("adding Ground");
       add(ground);
 
+      var temp:Entity = new Entity()
+        .withComponent(new SolidComponent());
+      temp.makeGraphic(FlxG.width, 4, 0xff998822);
+      temp.x = 10;
+      temp.y = 0;
+      add(temp);
+
+
+      // Add processes
       componentEntitySystem.addProcess(new PlayerProcess());
       componentEntitySystem.addProcess(new SolidProcess());
 
@@ -72,13 +52,13 @@ package src.states
 
     override public function add(Object:FlxBasic):FlxBasic
     {
-      super.add(Object);
-
       var ent:Entity = Object as Entity;
       if (ent !== null)
       {
         componentEntitySystem.add(ent);
       }
+      super.add(Object);
+
       return Object;
     }
 
