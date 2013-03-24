@@ -25,7 +25,11 @@ package src.core
 
     public final function setParams(params:Object):void
     {
-      this._params = params;
+      this._params = initParams();
+      for (var key:String in params)
+      {
+        this._params[key] = params[key];
+      }
     }
 
     public final function withData(ent:Entity):Component
@@ -42,6 +46,12 @@ package src.core
     public function initialize():void
     {
       FlxG.log("Shouldn't see this!");
+    }
+
+    protected function initParams():Object
+    {
+      FlxG.log("Shouldn't see this!");
+      return {};
     }
   }
 }

@@ -34,9 +34,6 @@ package src.ents
         c.entity.acceleration.y = c.params.gravity;
       }
 
-//      FlxG.log("x = " + c.entity.x);
-//      FlxG.log("y = " + c.entity.y);
-
     }
   }
 }

@@ -14,8 +14,8 @@ package src.ents
 
     override public function run(ents:Array):void
     {
-      for (var i:Number = 0; i + 1 < ents.length; ++i)
-      for (var j:Number = 0; j + 1 < ents.length; ++j)
+      for (var i:Number = 0; i < ents.length; ++i)
+      for (var j:Number = i; j < ents.length; ++j)
       {
         if (i === j) continue;
 
@@ -23,6 +23,10 @@ package src.ents
         var ent2:Entity = ents[j];
 
         var touched:Boolean = FlxObject.separate(ent1, ent2);
+        if (touched) 
+        {
+          FlxG.log(i + " touched " + j + " :O");
+        }
       }
     }
   }

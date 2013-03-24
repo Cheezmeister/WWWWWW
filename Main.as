@@ -3,7 +3,7 @@ package
   import org.flixel.*;
   import src.states.*;
 
-        import src.core.*;
+  import src.core.*;
   import src.ents.*;
 
   
@@ -22,9 +22,9 @@ package
       FlxG.debug = true;
       FlxG.setDebuggerLayout(FlxG.DEBUGGER_BIG);
       
-      //60 simulated frames per second. request the same from flash for rendering.
-      FlxG.framerate = 60; 
-      FlxG.flashFramerate = 60;
+      //30 simulated frames per second. request the same from flash for rendering.
+      FlxG.framerate = 30; 
+      FlxG.flashFramerate = 30;
       
       //background colour AARRGGBB format - 0x means "hexadeximal"
       FlxG.bgColor = 0xffaaccaa;

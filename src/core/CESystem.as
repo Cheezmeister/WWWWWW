@@ -8,9 +8,12 @@ package src.core
     //private var _components:Object;
     private var _procs:Array;
 
+    private var _entmap:Object;
+
     public function CESystem()
     {
       _ents = new Array();
+      _entmap = {};
       _procs = new Array();
     }
 
@@ -24,9 +27,7 @@ package src.core
 
     public function addProcess(proc:Process):void
     {
-      //FlxG.log("pushing proc");
       _procs.push(proc);
-      //FlxG.log("pushed proc");
     }
 
     public function add(ent:Entity):void
@@ -40,6 +41,12 @@ package src.core
         FlxG.log("c=" + c);
         c.initialize();
         FlxG.log("inited");
+        var m:Array = _entmap[c.constructor];
+        if (!m) 
+        {
+          m = _entmap[c.constructor] = new Array();
+        }
+        m.push(ent);
       }
       FlxG.log("pushed ent");
     }
@@ -48,7 +55,6 @@ package src.core
     {
       for (var i:Number = 0; i < _procs.length; ++i)
       {
-      //  FlxG.log("process " + i + "updating");
         var p:Process = _procs[i];
         p.run(_ents);
       }
