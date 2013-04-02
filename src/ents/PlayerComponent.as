@@ -20,7 +20,7 @@ package src.ents
 
       this.entity.drag.x = -this.params.walkDrag;
 
-      this.entity.makeGraphic(50, 100, 0xffff0000);
+      this.entity.makeGraphic(5, 10, 0xffff0000);
 
       FlxG.log("param.walkaccell=" + this.params.walkAccel);
       FlxG.log("param.walkDrag=" + this.params.walkDrag);

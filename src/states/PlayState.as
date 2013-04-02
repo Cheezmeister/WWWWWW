@@ -19,10 +19,6 @@ package src.states
 
     override public function create():void
     {
-      titleText = new FlxText(0, 0, FlxG.width, title)
-        .setFormat(null, 8, 0xffffffff, "center", 0);
-      add(titleText);
-
 
       // Create CE
       componentEntitySystem = new CESystem();
@@ -36,19 +32,19 @@ package src.states
       ground.y = FlxG.height - 4;
       add(ground);
 
-      var temp:Entity = new Entity()
-        .withComponent(new PlayerComponent()
-          .withParams({
-            walkAccel : 20,
-            walkDrag : 2,
-            jumpVel : 80
-          }))
-        .withComponent(new SolidComponent());
-      temp.makeGraphic(FlxG.width / 4, 40, 0xff998822);
-      temp.x = FlxG.width / 2;
-      temp.y = FlxG.height / 2;
-      temp.acceleration.y = 40;
-      add(temp);
+//      var temp:Entity = new Entity()
+//        .withComponent(new PlayerComponent()
+//          .withParams({
+//            walkAccel : 20,
+//            walkDrag : 2,
+//            jumpVel : 80
+//          }))
+//        .withComponent(new SolidComponent());
+//      temp.x = FlxG.width / 2;
+//      temp.y = FlxG.height / 2;
+//      temp.acceleration.y = 40;
+//      add(temp);
+//      temp.makeGraphic(4, 4, 0xff998822);
 
       var player:Entity = new Entity()
         .withComponent(new PlayerComponent()
@@ -56,19 +52,20 @@ package src.states
             name : "Bob",
             walkAccel : 40,
             walkDrag : 0.2,
-            jumpVel : 10
+            jumpVel : 10,
+            gravity : 40
           }
         )
       );
-      player.x = 40;
-      player.y = 40;
+      player.x = FlxG.width / 2;
+      player.y = 0;
       player.acceleration.y = 4;
       add(player);
 
 
       // Add processes
       componentEntitySystem.addProcess(new PlayerProcess());
-//      componentEntitySystem.addProcess(new SolidProcess());
+      componentEntitySystem.addProcess(new SolidProcess());
 
     }
 
@@ -100,33 +97,6 @@ package src.states
       componentEntitySystem.update();
       super.update();
     }
-
-
-//    private function handleInput():void
-//    {
-//      if (FlxG.mouse.justPressed())
-//      {
-//        sp = new FlxPoint(FlxG.mouse.screenX, FlxG.mouse.screenY);
-//      }
-//      if (FlxG.mouse.justReleased())
-//      {
-//        if (sp.x - FlxG.mouse.screenX > 40 &&
-//            sp.y - FlxG.mouse.screenY > 40)
-//          addBar(sp, FlxG.mouse);
-//      }
-//    }
-//    private function addBar(sp:FlxPoint, ep:Mouse):void
-//    {
-//      var bar:FlxSprite = new FlxSprite(
-//        min(sp.x, ep.screenX),
-//        min(sp.y, ep.screenY)
-//        );
-//      bar.solid = true;
-//      bar.acceleration.y = 80;
-//      bar.angularVelocity = 20;
-//      bar.makeGraphic(40, 10, 0xffaaeedd);
-//      add(bar); 
-//    }
 
     public static function min(x:Number, y:Number):Number
     {

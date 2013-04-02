@@ -7,7 +7,7 @@ package
   import src.ents.*;
 
   
-  [SWF(width="640", height="480", backgroundColor="#000000")]
+  [SWF(width="1280", height="480", backgroundColor="#000000")]
   [Frame(factoryClass="Preloader")]
 
   public class Main extends FlxGame
@@ -15,7 +15,7 @@ package
     public function Main()
     {
       // 320x240 virtual resolution, zoomed to x2 pixels - menustate is the default state
-      super(640,480,PlayState,1);
+      super(1280,480,PlayState,1);
       
       //set this to true if you want it to be built with the con
       forceDebugger = true;

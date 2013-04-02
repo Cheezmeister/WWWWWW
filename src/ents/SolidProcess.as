@@ -25,7 +25,7 @@ package src.ents
         var touched:Boolean = FlxObject.separate(ent1, ent2);
         if (touched) 
         {
-          FlxG.log(i + " touched " + j + " :O");
+          FlxG.log(i + " touched " + j + " :O " + ent1 + " / " + ent2);
         }
       }
     }

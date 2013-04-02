@@ -53,5 +53,18 @@ package src.core
       FlxG.log("Shouldn't see this!");
       return {};
     }
+
+    public function toString():String
+    {
+      var p:String = '(';
+
+      for (var key:String in params)
+      {
+        p += key + ':' + params[key]
+      }
+      p += ')';
+
+      return p;
+    }
   }
 }

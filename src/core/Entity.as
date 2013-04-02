@@ -25,5 +25,13 @@ package src.core
       this._components[type] = c; 
       c.setData(this);
     }
+    public override function toString():String
+    {
+      var comp:String = '';
+      for (var key:String in components)
+        comp += key + components[key];
+
+      return '{' + super.toString() + comp + '}';
+    }
   }
 }
