@@ -32,20 +32,6 @@ package src.states
       ground.y = FlxG.height - 4;
       add(ground);
 
-//      var temp:Entity = new Entity()
-//        .withComponent(new PlayerComponent()
-//          .withParams({
-//            walkAccel : 20,
-//            walkDrag : 2,
-//            jumpVel : 80
-//          }))
-//        .withComponent(new SolidComponent());
-//      temp.x = FlxG.width / 2;
-//      temp.y = FlxG.height / 2;
-//      temp.acceleration.y = 40;
-//      add(temp);
-//      temp.makeGraphic(4, 4, 0xff998822);
-
       var player:Entity = new Entity()
         .withComponent(new PlayerComponent()
           .withParams({
@@ -58,9 +44,24 @@ package src.states
         )
       );
       player.x = FlxG.width / 2;
-      player.y = 0;
+      player.y = FlxG.height / 2;
       player.acceleration.y = 4;
       add(player);
+
+      FlxG.log("Added Player");
+
+      var map:FlxTilemap = new FlxTilemap();
+      map.loadMap(
+        "0,0,0,0,0,0,0,0," +
+        "0,0,0,0,0,0,0,0," +
+        "0,0,0,0,0,0,0,0," +
+        "0,0,0,0,0,0,0,0," +
+        "1,0,0,0,0,1,0,1," +
+        "1,1,1,1,1,1,1,1",
+
+        null, 80, 80, FlxTilemap.AUTO, 0, 0, 0);
+
+      add(map);
 
 
       // Add processes
