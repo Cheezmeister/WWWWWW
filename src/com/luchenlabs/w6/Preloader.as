@@ -1,4 +1,4 @@
-package
+package com.luchenlabs.w6
 {
 	import org.flixel.system.FlxPreloader;
 	import flash.display.StageQuality;
@@ -7,7 +7,7 @@ package
 	{
 		public function Preloader()
 		{
-			className = "Main";
+			className = "com.luchenlabs.w6.Main";
 			//stage.quality = StageQuality.LOW;
 			super();
 		}

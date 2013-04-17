@@ -1,6 +1,6 @@
-package src.ents
+package com.luchenlabs.w6.ents
 {
-  import src.core.*;
+  import com.luchenlabs.w6.core.*;
   import org.flixel.*;
 
   public dynamic class SolidComponent extends Component

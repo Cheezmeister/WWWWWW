@@ -1,4 +1,4 @@
-package src.core
+package com.luchenlabs.w6.core
 {
   import org.flixel.*;
 

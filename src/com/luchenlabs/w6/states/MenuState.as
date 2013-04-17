@@ -1,4 +1,4 @@
-package src.states
+package com.luchenlabs.w6.states
 {
   import org.flixel.*;
 

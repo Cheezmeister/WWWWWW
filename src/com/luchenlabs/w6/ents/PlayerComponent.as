@@ -1,6 +1,6 @@
-package src.ents
+package com.luchenlabs.w6.ents
 {
-  import src.core.*;
+  import com.luchenlabs.w6.core.*;
   import org.flixel.*;
 
   /**
@@ -19,7 +19,7 @@ package src.ents
     {
 
       this.entity.drag.x = -this.params.walkDrag;
-
+      this.entity.acceleration.y = this.params.gravity;
       this.entity.makeGraphic(5, 10, 0xffff0000);
 
       FlxG.log("param.walkaccell=" + this.params.walkAccel);

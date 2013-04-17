@@ -1,7 +1,7 @@
-package src.ents
+package com.luchenlabs.w6.ents
 {
   import org.flixel.*;
-  import src.core.*;
+  import com.luchenlabs.w6.core.*;
 
   public class PlayerProcess extends Process
   {
@@ -11,6 +11,8 @@ package src.ents
     }
     protected override function operate(c:Component):void
     {
+		FlxG.log("velocity " + c.entity.velocity.y + "\tacceleration " + c.entity.acceleration.y);
+		 
       // Walk left/right
       c.entity.acceleration.x = (
         FlxG.keys.RIGHT ? c.params.walkAccel : 
@@ -21,7 +23,7 @@ package src.ents
       if (FlxG.keys.SPACE)
       {
         c.entity.velocity.y = -c.params.jumpVel;
-        c.entity.y--;
+		c.entity.y--;
       }
 
       // Fall/stand

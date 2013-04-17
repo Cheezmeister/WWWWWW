@@ -1,7 +1,7 @@
-package src.ents
+package com.luchenlabs.w6.ents
 {
   import org.flixel.*;
-  import src.core.*;
+  import com.luchenlabs.w6.core.*;
 
   public class DamageProcess extends Process
   {

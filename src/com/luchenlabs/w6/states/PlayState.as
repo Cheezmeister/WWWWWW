@@ -1,9 +1,9 @@
-package src.states
+package com.luchenlabs.w6.states
 {
   import org.flixel.*;
   import org.flixel.system.input.*;
-  import src.core.*;
-  import src.ents.*;
+  import com.luchenlabs.w6.core.*;
+  import com.luchenlabs.w6.ents.*;
 
   public class PlayState extends FlxState
   {
@@ -16,6 +16,7 @@ package src.states
     private var sp:FlxPoint = null;
 
     private var componentEntitySystem:CESystem;
+    private var player : *;
 
     override public function create():void
     {
@@ -24,6 +25,20 @@ package src.states
       componentEntitySystem = new CESystem();
 
       // Add ents
+      var map:FlxTilemap = new FlxTilemap();
+      map.loadMap(
+        "0,0,0,0,0,0,0,0\n" +
+        "0,0,0,0,0,0,0,0\n" +
+        "0,0,0,0,0,0,0,0\n" +
+        "0,0,1,0,0,0,1,0\n" +
+        "0,0,0,0,0,1,0,0\n" +
+        "0,0,0,0,1,0,0,0",
+
+        Assets.imgTest, 80, 80, FlxTilemap.OFF, 0, 0, 1);
+
+      add(map);
+	  FlxG.log("Added Map");
+
       var ground:Entity = new Entity()
         .withComponent(new SolidComponent());
       ground.makeGraphic(FlxG.width, 4, 0xff228822);
@@ -32,36 +47,22 @@ package src.states
       ground.y = FlxG.height - 4;
       add(ground);
 
-      var player:Entity = new Entity()
+      this.player = new Entity()
         .withComponent(new PlayerComponent()
           .withParams({
             name : "Bob",
             walkAccel : 40,
             walkDrag : 0.2,
-            jumpVel : 10,
-            gravity : 40
+            jumpVel : 400,
+            gravity : 200
           }
         )
       );
       player.x = FlxG.width / 2;
       player.y = FlxG.height / 2;
-      player.acceleration.y = 4;
       add(player);
 
       FlxG.log("Added Player");
-
-      var map:FlxTilemap = new FlxTilemap();
-      map.loadMap(
-        "0,0,0,0,0,0,0,0," +
-        "0,0,0,0,0,0,0,0," +
-        "0,0,0,0,0,0,0,0," +
-        "0,0,0,0,0,0,0,0," +
-        "1,0,0,0,0,1,0,1," +
-        "1,1,1,1,1,1,1,1",
-
-        null, 80, 80, FlxTilemap.AUTO, 0, 0, 0);
-
-      add(map);
 
 
       // Add processes
@@ -96,6 +97,7 @@ package src.states
     override public function update():void
     {
       componentEntitySystem.update();
+      FlxG.collide(player, this);
       super.update();
     }
 
