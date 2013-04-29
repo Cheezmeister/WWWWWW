@@ -39,8 +39,7 @@ package com.luchenlabs.w6.states
       add(map);
 	  FlxG.log("Added Map");
 
-      var ground:Entity = new Entity()
-        .withComponent(new SolidComponent());
+      var ground:FlxSprite = new FlxSprite();
       ground.makeGraphic(FlxG.width, 4, 0xff228822);
       ground.immovable = true;
       ground.x = 0;
@@ -51,10 +50,10 @@ package com.luchenlabs.w6.states
         .withComponent(new PlayerComponent()
           .withParams({
             name : "Bob",
-            walkAccel : 40,
-            walkDrag : 0.2,
+            walkAccel : 360,
+            walkDrag : 200,
             jumpVel : 400,
-            gravity : 200
+            gravity : 800
           }
         )
       );
@@ -67,7 +66,6 @@ package com.luchenlabs.w6.states
 
       // Add processes
       componentEntitySystem.addProcess(new PlayerProcess());
-      componentEntitySystem.addProcess(new SolidProcess());
 
     }
 

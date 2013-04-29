@@ -9,7 +9,7 @@ package com.luchenlabs.w6.ents
    *   jumpVel
    *   walkDrag
    */
-  public dynamic class PlayerComponent extends Component
+  public dynamic class WorldComponent extends Component
   {
     public function PlayerComponent():void
     {
@@ -17,9 +17,14 @@ package com.luchenlabs.w6.ents
     }
     public override function initialize():void
     {
-      this.entity.drag.x = this.params.walkDrag;
+
+      this.entity.drag.x = -this.params.walkDrag;
       this.entity.acceleration.y = this.params.gravity;
-      this.entity.makeGraphic(5, 10, 0x88ff0000);
+      this.entity.makeGraphic(5, 10, 0xffff0000);
+
+      FlxG.log("param.walkaccell=" + this.params.walkAccel);
+      FlxG.log("param.walkDrag=" + this.params.walkDrag);
+      FlxG.log("param.jumpVel=" + this.params.jumpVel);
     }
     override protected function initParams():Object
     {
